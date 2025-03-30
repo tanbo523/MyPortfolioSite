@@ -1,0 +1,658 @@
+/* -------------------
+
+共通
+
+---------------------*/
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  letter-spacing: 0.1em;
+  color: #573131;
+  background-color: #e2d1d1;
+  overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  transition: all .4s;
+}
+a:hover {
+  opacity: 0.3;
+
+}
+
+h1,h4{
+   margin:  8px 16px 0;
+}
+h2,h3,p,a,ul,li {
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  color: #333;
+  margin-bottom: 8px;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+
+/* 幅 */
+
+.wrapper {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* セクションタイトル */
+
+.section-title {
+  font-size: 1.75rem;
+  text-align: center;
+  position: relative;
+  background:#573131;
+  color:#e2d1d1;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.section-title::after {
+  position: absolute;
+  content: '';
+  left: -2px;
+  top: -2px;
+  border: none;
+  border-left: solid 40px #e2d1d1;
+  border-bottom: solid 79px transparent;
+  z-index:-2;
+}
+.about::after {
+  border-left: solid 40px #a77777;
+}
+
+/* -------------------
+
+header
+
+---------------------*/
+header {
+  padding: 0 8px;
+} 
+
+/* -------------------
+
+nav button
+
+---------------------*/
+
+.navbutton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #a77777;
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+  z-index: 999;
+  transition: all .3s;
+  border-radius: 50%;
+}
+
+.navbutton:hover {
+  opacity: 0.7;
+}
+
+/* メニューが閉じているとき */
+
+.navbutton span {
+  position: absolute;
+  left: 21px;
+  width: 35px;
+  height: 2px;
+  background: #e2d1d1;
+  transition: all .4s ;
+}
+
+.navbutton span:nth-child(1) {
+  top: 26px;
+}
+.navbutton span:nth-child(2) {
+  top: 37px;
+}
+.navbutton span:nth-child(3) {
+  top: 48px;
+}
+
+/* メニューが開いているとき */
+
+.navbutton.active span:nth-child(1) {
+  top: 37px;
+  transform: rotate(-45deg);
+}
+.navbutton.active span:nth-child(2) ,
+.navbutton.active span:nth-child(3) {
+  top: 37px;
+  transform: rotate(45deg);
+}
+
+/* -------------------
+
+nav
+
+------------------- */
+
+.menu {
+  width: 100%;
+  z-index: 998;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  text-align: center;
+  padding: 120px 0 40px 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .5s;
+}
+
+.menu.active {
+  opacity: .9;
+  pointer-events: auto;
+}
+
+.menu a,
+.menu .menubutton {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #e2d1d1;
+  font-weight: bold;
+}
+
+.menubutton {
+  margin-top: 20px;
+  border: 1px #e2d1d1 solid;
+  padding: 15px 0;
+  position: relative;
+  width: 248px;
+  transition: all .3s;
+}
+
+.menubutton::after {
+  content: " ";
+  border-right: solid 1px #e2d1d1;
+  border-bottom: solid 1px #e2d1d1;
+  position: absolute;
+  right: -6px;
+  bottom: -6.5px;
+  width: 250px;
+  height: 56px;
+}
+
+.menubutton:hover {
+  background: #e2d1d1;
+  color: #e2d1d1;
+}
+
+/* -------------------
+
+main visual
+
+---------------------*/
+
+
+.imgcloud {
+  margin-top: 36px;
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.main-img{
+  position: absolute;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+#mainvisual .imgcloud::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: inset 0 0 15px 15px #e2d1d1;
+}
+
+.main-img.appear {
+  opacity: 1;
+}
+
+.main-text .title {
+  font-size: 1.75rem;
+  margin: 0 0 10px 16px;
+}
+
+
+.mainbutton {
+  display: block;
+  color: #fff;
+  font-size: 1.5em;
+  background: black;
+  margin: 10px 16px 0;
+  border-radius: 10px;
+  padding: 15px 35px;
+  text-align: center;
+  border-bottom: 6px solid #9a0413;
+  cursor: pointer;
+  position: relative;
+  transition: opacity .3s, transform .3s;
+}
+
+.mainbutton:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.mainbutton::after {
+  content: '';
+  width: 13px;
+  height: 13px;
+  border-top: solid 3px #fff;
+  border-right: solid 3px #fff;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 26px;
+  right: 30px;
+}
+
+/* -------------------
+
+main
+
+---------------------*/
+
+main {
+  margin-top: 86px;
+}
+
+.main-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* -------------------
+
+keireki
+
+------------------- */
+
+#keireki {
+  margin-top: 40px;
+  padding: 24px;
+}
+
+/* #keireki h2 {
+  margin-bottom: 60px;
+} */
+
+#keireki .container,
+#denkaru .container,
+.section-title {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .5s;
+  transition-delay: .2s;
+  margin-bottom: 40px;
+}
+
+#denkaru .container {
+  transition-delay: 0;
+  transition: all .2s;
+}
+
+#keireki .container.scrolled,
+#denkaru .container.scrolled,
+.section-title.scrolled {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.student {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.student p {
+  font-size: 12px;
+  margin-top: 10px;
+  line-height: 19px;
+}
+
+#keireki img {
+  background: rgb(212, 211, 211);
+  border-radius: 50%;
+  height: 120px;
+  width: auto;
+}
+
+/* --------------------
+
+work
+
+-------------------- */
+
+#work {
+  position: relative;
+  margin-top: 32px;
+}
+
+#work .container {
+  background: #bea3a3a8;
+  border-top: 8px solid #a77777;
+  border-bottom: 8px solid #a77777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+}
+
+#work .container {
+  margin-top: 40px;
+}
+
+#work .container.left {
+  transform: translateX(-90%);
+  opacity: 0;
+  transition: all .5s;
+  transition-delay: .2s;
+  margin-right: 16px;
+}
+
+#work .container.scrolled.left{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#work .container.right {
+  transform: translateX(90%);
+  opacity: 0;
+  transition: all .3s;
+  transition-delay: .2s;
+  margin-left: 16px;
+}
+
+#work .container.scrolled.right {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ---------------------
+
+summary
+
+--------------------- */
+
+#summary {
+  background-color: #a77777;
+  padding: 40px 16px;
+  margin: 80px 0;
+}
+
+#summary .container {
+  border-radius: 18px;
+  background: #fff;
+  padding: 32px;
+  margin-top: 32px;
+}
+
+#summary .container {
+  transform: translateX(5%)  translateY(20%);
+  opacity: 0;
+  transition: all .2s;
+  transition-delay: .2s;
+}
+#summary .container:nth-child(odd) {
+  opacity: 0;
+  transform: translateX(-5%)  translateY(20%);
+}
+
+#summary .container.scrolled {
+  opacity: 1;
+  margin: 32px 16px;
+  transform: translateX(0) translateY(0);
+}
+
+/* #summary h2 {
+  margin-bottom: 64px;
+} */
+
+#summary h4 {
+  margin: 0;
+  text-align: center;
+}
+
+#summary h4 {
+  font-size: 16px;
+  margin-bottom: 28px;
+}
+
+#summary p {
+  font-size: 16px;
+}
+
+
+
+/* -------------------
+
+footer
+
+------------------- */
+
+footer {
+  margin-top: 80px;
+  padding: 48px 16px 16px 16px;
+  background: #e8e8e8;
+  font-size: 0.75rem;
+}
+
+.footer-menu{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.footer-menu > li {
+  width: 50%;
+  letter-spacing: 0.15em;
+}
+
+.footer-menu > li:nth-child(1),
+.footer-menu > li:nth-child(2) {
+  margin-bottom: 30px;
+}
+
+.footer-menu .item {
+  padding: 10px 0 0 10px;
+}
+
+.footer-menu .item li {
+  line-height: 2.3em;
+}
+
+.footer-menu a {
+  transition: .3s;
+}
+
+.footer-menu a:hover {
+  opacity: 0.7;
+}
+
+footer .copy {
+  text-align: center;
+}
+
+
+/* --------------------
+
+denkaru page
+
+-------------------- */
+
+#denkaru {
+  padding: 0 32px;
+}
+#denkaru .container {
+  margin: 0 auto;
+}
+#denkaru p {
+  margin: 16px 0 32px;
+}
+
+
+
+
+
+
+/* -------------------------------
+
+pc or tablet
+
+------------------------------- */
+
+@media (min-width: 900px) {
+
+  body {
+    font-size: 1.15em;
+  }
+
+
+  #mainvisual .title {
+    font-size: 2.875rem;
+    font-weight: bold;
+  }
+
+  .imgcloud {
+    position: relative;
+    height: 400px;
+  }
+
+  .mainbutton {
+    margin-top: 28px;
+    width: 360px;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+  }
+
+  .section-title::after {
+    width: 100px;
+  }
+
+  .navbutton {
+    width: 100px;
+    height: 100px;
+  }
+
+  .navbutton span {
+    left: 25px;
+    width: 50px;
+    height: 2px;
+    background: #fff;
+    transition: all .4s ease;
+  }
+
+  .navbutton span:nth-child(1) {
+    top: 36px;
+  }
+  .navbutton span:nth-child(2) {
+    top: 50px;
+  }
+  .navbutton span:nth-child(3) {
+    top: 64px;
+  }
+  
+  .navbutton.active span:nth-child(1) {
+    top: 47px;
+    transform:rotate(-45deg);
+  }
+  .navbutton.active span:nth-child(2) ,
+  .navbutton.active span:nth-child(3) {
+    top: 47px;
+  }
+
+  #work .container {
+    font-size: 1.15em;
+  }
+
+  #work .container.scrolled.right {
+    transform: translateX(0);
+  } 
+
+  #keireki h2,
+  #work h2,
+  #summary h2 {
+    margin-bottom: 32px;
+  }
+  
+  #keireki .container {
+    margin-bottom: 32px;
+    padding: 0;
+  }
+
+  .student {
+    margin-bottom: 0;
+  }
+
+  #summary {
+    padding: 40px 16px;
+  }
+  #summary .summary-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  #summary .container {
+    padding: 60px;
+  }
+  #summary .container.scrolled {
+    margin: 8px;
+  }
+
+  footer {
+    font-size: 0.75em;
+  }
+
+  .footer-menu > li {
+    width: 25%;
+  }
+
+  /* ---------
+  denkaru page
+  --------- */
+  #denkaru {
+    padding: 0 100px;
+  }
+
+  #denkaru p {
+    margin: 16px 0 48px;
+  }
+}
